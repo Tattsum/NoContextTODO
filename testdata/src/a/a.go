@@ -1,7 +1,14 @@
 package a
 
+import (
+	"context"
+	c "context"
+)
+
 func f() {
-	// The pattern can be written in regular expression.
-	var gopher int // want "pattern"
-	print(gopher)  // want "identifyer is gopher"
+	_ = context.Background() // OK
+	_ = context.TODO() // want "NG"
+
+	_ = c.TODO() // want "NG"
+	_ = c.Background() // OK
 }
