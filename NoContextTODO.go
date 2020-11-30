@@ -24,10 +24,9 @@ var ctxpkg *types.Package
 
 func run(pass *analysis.Pass) (interface{}, error) {
 	for _, pkg := range pass.Pkg.Imports() {
-		if pkg.Path() != "context" {
-			return nil, nil
+		if pkg.Path() == "context" {
+			ctxpkg = pkg
 		}
-		ctxpkg = pkg
 	}
 
 	inspect := pass.ResultOf[inspect.Analyzer].(*inspector.Inspector)
@@ -53,7 +52,7 @@ func run(pass *analysis.Pass) (interface{}, error) {
 				return
 			}
 
-			pass.Reportf(caller.Pos(), "NG")
+			pass.Reportf(caller.Pos(), "don't use context.Background. Use context.TODO")
 		}
 	})
 
