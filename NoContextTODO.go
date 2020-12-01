@@ -52,7 +52,7 @@ func run(pass *analysis.Pass) (interface{}, error) {
 				return
 			}
 
-			pass.Reportf(caller.Pos(), "don't use context.Background. Use context.TODO")
+			pass.Reportf(caller.Pos(), "don't use context.TODO. Use context.Background")
 		}
 	})
 

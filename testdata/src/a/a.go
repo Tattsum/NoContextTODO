@@ -7,8 +7,8 @@ import (
 
 func f() {
 	_ = context.Background() // OK
-	_ = context.TODO() // want "don't use context.Background. Use context.TODO"
+	_ = context.TODO() // want "don't use context.TODO. Use context.Background"
 
-	_ = c.TODO() // want "don't use context.Background. Use context.TODO"
+	_ = c.TODO() // want "don't use context.TODO. Use context.Background"
 	_ = c.Background() // OK
 }
